@@ -67,54 +67,43 @@ $(document).ready(function(){
 
 
 /* ФОРМА */
-document.addEventListener('DOMContentLoaded', () => {
-
+document.addEventListener('DOMContentLoaded', function() {
+    
     const form = document.getElementById('contactForm');
     const statusMsg = document.getElementById('statusMessage');
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault(); // Останавливаем перезагрузку страницы
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Чтобы страница не перезагружалась
 
-        // 1. Показываем статус "Отправка..." (чтобы пользователь понимал, что процесс идет)
-        statusMsg.textContent = 'Отправка...';
-        statusMsg.className = 'status';
-
-        // 2. Собираем данные
+        // Собираем данные
         const formData = new FormData(form);
 
-        try {
-            // Точь-в-точь как на твоем рабочем сайте
-            const response = await fetch('https://formcarry.com/s/9MOe0WO5uDQ', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            // Проверка успеха (коды от 200 до 399 считаются успехом)
-            // Именно эта проверка была в твоем рабочем коде
-            const isSuccess = response.status >= 200 && response.status < 400;
-
-            if (isSuccess) {
-                statusMsg.textContent = '✅ Форма успешно отправлена!';
+        // Отправляем
+        fetch('https://formcarry.com/s/9MOe0WO5uDQ', {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(function(response) {
+            if (response.ok) {
+                statusMsg.textContent = '✅ Заявка успешно отправлена!';
                 statusMsg.className = 'status success';
-                form.reset(); // Очищаем поля
+                form.reset(); // Очистить поля
             } else {
-                // Если сервис вернул ошибку, пробуем прочитать, что там
-                const result = await response.json();
-                throw new Error(result.message || 'Ошибка сервера');
+                // Если ошибка
+                statusMsg.textContent = '❌ Ошибка отправки.';
+                statusMsg.className = 'status error';
             }
-
-        } catch (error) {
-            // Если интернета нет или другая ошибка
-            statusMsg.textContent = '❌ Ошибка отправки. Попробуйте позже.';
+        })
+        .catch(function(error) {
+            // Если совсем всё плохо (например, нет интернета)
+            statusMsg.textContent = '❌ Ошибка отправки.';
             statusMsg.className = 'status error';
-            console.error(error); // Для отладки в консоли (F12)
-        }
+        });
     });
 
 });
 
 
 });
+
