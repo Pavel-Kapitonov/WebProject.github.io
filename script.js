@@ -1,21 +1,64 @@
-/* БУРГЕР МЕНЮ */
-
-const burgerBtn = document.getElementById('burgerBtn');
-const menuList = document.getElementById('menuList');
-const menuLinks = document.querySelectorAll('.main-nav a');
+document.addEventListener('DOMContentLoaded', function() {
 
 
-burgerBtn.addEventListener('click', () => {
-    menuList.classList.toggle('active');
-    burgerBtn.classList.toggle('open');
-});
+    /* БУРГЕР МЕНЮ */
 
-menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        menuList.classList.remove('active');
-        burgerBtn.classList.remove('open');
+    const burgerBtn = document.getElementById('burgerBtn');
+    const menuList = document.getElementById('menuList');
+    const menuLinks = document.querySelectorAll('.main-nav a');
+
+
+    burgerBtn.addEventListener('click', () => {
+        menuList.classList.toggle('active');
+        burgerBtn.classList.toggle('open');
     });
+
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menuList.classList.remove('active');
+            burgerBtn.classList.remove('open');
+        });
+    });
+
+
+    /* ФОРМА */ 
+
+    
+    const form = document.getElementById('contactForm');
+    const statusMsg = document.getElementById('statusMessage');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Чтобы страница не перезагружалась
+
+        // Собираем данные
+        const formData = new FormData(form);
+
+        // Отправляем
+        fetch('https://formcarry.com/s/9MOe0WO5uDQ', {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(function(response) {
+            if (response.ok) {
+                statusMsg.textContent = '✅ Заявка успешно отправлена!';
+                statusMsg.className = 'status success';
+                form.reset(); // Очистить поля
+            } else {
+                // Если ошибка
+                statusMsg.textContent = '❌ Ошибка отправки.';
+                statusMsg.className = 'status error';
+            }
+        })
+        .catch(function(error) {
+            // Если совсем всё плохо (например, нет интернета)
+            statusMsg.textContent = '❌ Ошибка отправки.';
+            statusMsg.className = 'status error';
+        });
+    });
+
 });
+
 
 
 
@@ -63,47 +106,3 @@ $(document).ready(function(){
     });
 
 });
-
-
-
-/* ФОРМА */
-document.addEventListener('DOMContentLoaded', function() {
-    
-    const form = document.getElementById('contactForm');
-    const statusMsg = document.getElementById('statusMessage');
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault(); // Чтобы страница не перезагружалась
-
-        // Собираем данные
-        const formData = new FormData(form);
-
-        // Отправляем
-        fetch('https://formcarry.com/s/9MOe0WO5uDQ', {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-        })
-        .then(function(response) {
-            if (response.ok) {
-                statusMsg.textContent = '✅ Заявка успешно отправлена!';
-                statusMsg.className = 'status success';
-                form.reset(); // Очистить поля
-            } else {
-                // Если ошибка
-                statusMsg.textContent = '❌ Ошибка отправки.';
-                statusMsg.className = 'status error';
-            }
-        })
-        .catch(function(error) {
-            // Если совсем всё плохо (например, нет интернета)
-            statusMsg.textContent = '❌ Ошибка отправки.';
-            statusMsg.className = 'status error';
-        });
-    });
-
-});
-
-
-});
-
