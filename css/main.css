@@ -351,9 +351,9 @@ body {
 }
 
 
-    /* ФОРМА */
+/* ФОРМА */
 
-    .contact-section {
+.contact-section {
     width: 100%;
     margin-bottom: 50px;
     background-color: #222; 
@@ -362,31 +362,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    }
+}
 
-    .contact-container {
-        width: 100%;
-        max-width: 600px;
-        text-align: center;
-    }
+.contact-container {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
 
-    .contact-title {
+.contact-title {
         font-size: clamp(2rem, 4vw, 3.5rem); 
         font-weight: 800; 
         line-height: 1.1; 
         color: #fff;
         text-transform: uppercase;
         margin-bottom: 50px;
-    }
+}
 
-    .input-group {
+.input-group {
         margin-bottom: 15px;
-    }
+}
 
-    .contact-section input[type="text"],
-    .contact-section input[type="email"],
-    .contact-section input[type="tel"],
-    .contact-section textarea {
+.contact-section input[type="text"],
+.contact-section input[type="email"],
+.contact-section input[type="tel"],
+.contact-section textarea {
         width: 100%;
         background-color: transparent; /* Прозрачный фон */
         border: 1px solid #555;
@@ -397,76 +397,102 @@ body {
         font-family: 'Arial', sans-serif;
         outline: none;
         transition: border-color 0.3s;
-    }
+}
 
-    .contact-section input::placeholder,
-    .contact-section textarea::placeholder {
-        color: #888;
-    }
+.contact-section input::placeholder,
+.contact-section textarea::placeholder {
+    color: #888;
+}
 
     /* При клике рамка становится белой */
-    .contact-section input:focus,
-    .contact-section textarea:focus {
-        border-color: #fff;
-    }
+.contact-section input:focus,
+.contact-section textarea:focus {
+    border-color: #fff;
+}
 
 
-    .checkbox-group {
+.checkbox-group {
         display: flex;
         align-items: flex-start;
         text-align: left;
         gap: 10px;
         margin-bottom: 30px;
         margin-top: 20px;
-    }
+}
 
-    .checkbox-group input[type="checkbox"] {
-        width: 20px;
-        height: 20px;
-        margin-top: 2px;
-        cursor: pointer;
-        accent-color: #fff; /* Делаем галочку белой/черной в зависимости от браузера */
-    }
+.checkbox-group input[type="checkbox"] {
+    /* Сбрасываем стандартные стили */
+    -webkit-appearance: none;
+    appearance: none;
+    /* Рисуем свой квадрат */
+    background-color: transparent;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #fff; /* Белая рамка */
+    border-radius: 4px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    margin-top: 2px;
+}
 
-    .checkbox-group label {
-        font-size: 12px;
-        color: #aaa;
-        line-height: 1.4;
-        cursor: pointer;
-    }
+/* Когда галочка нажата */
+.checkbox-group input[type="checkbox"]::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: #fff; /* Белый квадратик внутри при нажатии */
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em white;
+}
 
-    .submit-btn {
-        width: 100%;
-        padding: 18px;
-        border: none;
-        border-radius: 8px;
-        background-color: #fff;
-        color: #000;
-        font-size: 14px;
-        font-weight: 700;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.1s;
-    }
+.checkbox-group input[type="checkbox"]:checked::before {
+        transform: scale(1);
+}
 
-    .submit-btn:hover {
-        background-color: #e0e0e0;
-    }
+.checkbox-group label {
+    font-size: 12px;
+    color: #aaa;
+    line-height: 1.4;
+    cursor: pointer;
+}
 
-    .submit-btn:active {
-        transform: scale(0.98);
-    }
+.submit-btn {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #000;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.submit-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
 
 
-    .status {
-        margin-top: 20px;
-        font-size: 14px;
-        min-height: 20px;
-    }
-    .status.success { color: #4caf50; }
-    .status.error { color: #f44336; }
+.status {
+    margin-top: 20px;
+    font-size: 14px;
+    min-height: 20px;
+}
+.status.success { color: #4caf50; }
+.status.error { color: #f44336; }
 
-    .main-footer {
+.main-footer {
     width: 100%;
     background-color: #222; /* Темно-серый фон (как на фото) */
     border-radius: 15px;    /* Сохраняем стилистику закруглений */
