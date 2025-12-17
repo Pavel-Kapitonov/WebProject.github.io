@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(form);
 
         // Отправляем
-        fetch('https://formcarry.com/s/9MOe0WO5uDQ', {
+        fetch('', {
             method: 'POST',
             body: formData,
             headers: { 'Accept': 'application/json' }
@@ -106,3 +106,4 @@ $(document).ready(function(){
     });
 
 });
+
