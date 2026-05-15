@@ -63,7 +63,6 @@ body {
 
 .hero-block {
     width: 100%;
-    /* Высота: весь экран минус высота хедера (120px) и отступ снизу (20px) */
     height: calc(100vh - 140px); 
     min-height: 500px;
     
@@ -137,11 +136,11 @@ body {
 }
 
 .section-title {
-    font-size: clamp(2rem, 4vw, 3rem); /* Адаптивный размер */
+    font-size: clamp(2rem, 4vw, 3rem); 
     font-weight: 800;
     text-transform: uppercase;
     color: #222;
-    margin: 40px 0; /* Отступ сверху и снизу от заголовка */
+    margin: 40px 0; 
     line-height: 1.1;
 }
 
@@ -182,7 +181,7 @@ body {
 
 .card-text-row {
     display: flex;
-    align-items: baseline; /* Выровнять текст и маленькие цифры по низу */
+    align-items: baseline; 
     gap: 10px;
     margin-bottom: 15px;
 }
@@ -241,7 +240,7 @@ body {
 
 
 .slide-item {
-    outline: none; /* Убираем синюю обводку при клике */
+    outline: none; 
 }
 
 .slide-img {
@@ -288,13 +287,13 @@ body {
 .slider-counter {
     font-size: 1.2rem;
     font-weight: 500;
-    font-family: monospace; /* Чтобы цифры не прыгали по ширине */
+    font-family: monospace; 
     letter-spacing: 2px;
 }
 
 
 .info-content {
-    flex: 1; /* Занимает оставшееся место */
+    flex: 1; 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -388,12 +387,12 @@ body {
 .contact-section input[type="tel"],
 .contact-section textarea {
         width: 100%;
-        background-color: transparent; /* Прозрачный фон */
+        background-color: transparent; 
         border: 1px solid #555;
         border-radius: 8px;
         padding: 15px 20px;
         font-size: 16px;
-        color: #fff; /* Белый текст */
+        color: #fff;
         font-family: 'Arial', sans-serif;
         outline: none;
         transition: border-color 0.3s;
@@ -404,7 +403,7 @@ body {
     color: #888;
 }
 
-    /* При клике рамка становится белой */
+
 .contact-section input:focus,
 .contact-section textarea:focus {
     border-color: #fff;
@@ -421,17 +420,15 @@ body {
 }
 
 .checkbox-group input[type="checkbox"] {
-    /* Сбрасываем стандартные стили */
     -webkit-appearance: none;
     appearance: none;
-    /* Рисуем свой квадрат */
     background-color: transparent;
     margin: 0;
     font: inherit;
     color: currentColor;
     width: 20px;
     height: 20px;
-    border: 1px solid #fff; /* Белая рамка */
+    border: 1px solid #fff; 
     border-radius: 4px;
     display: grid;
     place-content: center;
@@ -439,12 +436,11 @@ body {
     margin-top: 2px;
 }
 
-/* Когда галочка нажата */
 .checkbox-group input[type="checkbox"]::before {
     content: "";
     width: 10px;
     height: 10px;
-    background-color: #fff; /* Белый квадратик внутри при нажатии */
+    background-color: #fff;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
     box-shadow: inset 1em 1em white;
@@ -494,15 +490,15 @@ body {
 
 .main-footer {
     width: 100%;
-    background-color: #222; /* Темно-серый фон (как на фото) */
-    border-radius: 15px;    /* Сохраняем стилистику закруглений */
+    background-color: #222; 
+    border-radius: 15px;   
     padding: 50px 40px;
-    margin-bottom: 20px;    /* Небольшой отступ от самого низа браузера */
+    margin-bottom: 20px;   
     color: #fff;
     display: flex;
     flex-direction: column;
-    align-items: center;    /* Центрируем логотип */
-    gap: 40px;              /* Расстояние между лого и текстом */
+    align-items: center;   
+    gap: 40px;          
 }
 
 
@@ -523,7 +519,7 @@ body {
 
 .footer-left p {
     margin-bottom: 5px;
-    color: #888; /* Цвет копирайта чуть серее */
+    color: #888; 
     font-size: 14px;
 }
 
@@ -580,7 +576,6 @@ body {
     .main-nav ul.active { right: 0; }
     .main-nav a { font-size: 24px; }
 
-    /* Анимация крестика */
     .burger-menu.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
     .burger-menu.open span:nth-child(2) { opacity: 0; }
     .burger-menu.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
